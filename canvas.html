@@ -1,0 +1,57 @@
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canva截图</title>
+	<style type="text/css">
+		body{
+			width: 1000px;
+			height: 1000px;
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			display: inline-block;
+			float: left;
+		}
+		#main{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			border: 1px solid black;
+		}
+		#output{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			border: 1px solid black;
+		}
+		#bg{
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 9;
+		}
+		#cj{
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 10;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<canvas id="bg" height="300" width="300"></canvas>
+		<canvas id="cj" height="300" width="300"></canvas>
+	</div>
+	<div id="output">
+		<canvas id="out_canvas" height="300" width="300"></canvas>
+	</div>
+	<hr>
+	<input type="file" id="image_file" />
+	<input type="submit" id="update" value="上传">
+	<script src="canvas.js"></script>
+</body>
+</html>
