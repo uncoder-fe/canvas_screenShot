@@ -3,7 +3,6 @@ var update = document.querySelector("#update");
 /**
  * 上传图片并绘制到canvas里面
  */
-
 var CanvasImage = document.createElement('canvas');
     CanvasImage.height = 300;
     CanvasImage.width = 300;
@@ -14,10 +13,12 @@ update.addEventListener("click", function(event) {
     img.src = data;
     img.onload = function(e) {
       console.dir(this);
+      //图片真实尺寸
+      //this.height;this.width;
       //存储选择的图片
       CanvasImage.getContext('2d').drawImage(img, 0, 0,300,300);
-      //放到页面上
-      document.querySelector("#bg").src = img.src;
+      //页面显示
+      document.querySelector("#bg").src = data;
     };
   });
 }, false);
@@ -52,13 +53,16 @@ canvas.addEventListener("mousemove", function(event) {
 
 canvas.addEventListener("mouseup", function(event) {
   startX = null;
+  //截取
 	var imgData = CanvasImage.getContext('2d').getImageData(rectOptions.x, rectOptions.y, rectOptions.width, rectOptions.height);
+  //存储截取的图片
   var StoreImage = document.createElement('canvas');
-      StoreImage.height = 300;
-      StoreImage.width = 300;
-  var out_context = StoreImage.getContext('2d');
-  out_context.putImageData(imgData, 0, 0);
+      StoreImage.height = rectOptions.height;
+      StoreImage.width = rectOptions.width;
+      StoreImage.getContext('2d').putImageData(imgData, 0, 0); 
+  //由canvas转成png图片    
   var dataURL = StoreImage.toDataURL("image/png");
+  //显示到页面上  
   document.querySelector("#output").src = dataURL;
 }, false);
 
