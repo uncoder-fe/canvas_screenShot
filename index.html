@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style type="text/css" media="screen">
+			#test{
+				border: 1px solid red;
+			}
+	</style>
+</head>
+<body>
+	<canvas id='test' height='500' width='500'>
+		
+	</canvas>
+	<script>
+		var canvas = document.querySelector('#test');
+		var context = canvas.getContext('2d');
+
+		context.beginPath();
+    context.rect(100, 100, 50, 50);
+    context.strokeStyle = "green";
+    context.lineWidth = 1;
+    context.stroke();
+
+
+    canvas.addEventListener("click",function(e){
+    	console.log(e.x,e.y);
+    	console.log(context.isPointInPath(e.x, e.y));
+    });
+	</script>
+</body>
+</html>
